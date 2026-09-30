@@ -1,4 +1,4 @@
-type Stat = { id: number; value: string; label: string };
+{/*type Stat = { id: number; value: string; label: string };
 
 export default function StatsStrip({ stats }: { stats: Stat[] }) {
   return (
@@ -13,4 +13,4 @@ export default function StatsStrip({ stats }: { stats: Stat[] }) {
       </dl>
     </section>
   );
-}
+}*/}

@@ -60,15 +60,6 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section title="Our Mission" tone="white">
-        <div className="text-center text-2xl font-normal sm:text-4xl">
-          <p>Our Mission is to support excellence in education and a thriving environment for the development and bright future of the deprived youth in Haiti.
-             The foundation is dedicated to developing a comprehensive approach to learning in order to equip the children with instrumental skills, allowing them to participate effectively in the advancement of their community.
-            The foundation also encourages a cultural approach to learning and focuses on community service, which will serve as a foundation for the future.</p>
-          
-    
-        </div>
-      </Section>
 
       <Section title="Our Core Values" tone="white">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

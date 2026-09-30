@@ -1,7 +1,7 @@
 import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import Section from "@/components/Section";
-import StatsStrip from "@/components/StatsStrip";
+//import StatsStrip from "@/components/StatsStrip";
 import CallToAction from "@/components/CallToAction";
 import { stats } from "@/data/stats";
 
@@ -25,7 +25,7 @@ export default function ImpactPage() {
         title="Our Impact"
         subtitle="Since the 2010 earthquake, friends and supporters have helped us reach more schools and children in Haiti."
       />
-      <StatsStrip stats={stats} />
+      
 
       <Section title="Moments from Our Work" intro="A look at the students and communities your support reaches.">
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">

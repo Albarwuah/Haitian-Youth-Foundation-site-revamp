@@ -75,7 +75,19 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/20 px-4 py-6 text-center text-sm">
-        Copyright © {new Date().getFullYear()}, Haitian Youth Foundation Inc. All rights reserved.
+        <p>Copyright © {new Date().getFullYear()}, Haitian Youth Foundation Inc. All rights reserved.</p>
+        <p className="mt-3 flex items-center justify-center gap-2">
+          <Image
+            src="/gallery/HaitianHerelogo.png"
+            alt=""
+            width={32}
+            height={35}
+            className="h-9 w-auto rounded bg-black/30"
+          />
+          <span>Website by <Link href="https://www.haitianhere.com"
+          target="_blank"
+          rel="noopener noreferrer">HaitianHere</Link></span>
+        </p>
       </div>
     </footer>
   );
