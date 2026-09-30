@@ -1,16 +1,25 @@
+type MembersCardProps = { name: string; bio: string; image?: string; role: string };
 
+const initials = (name: string) =>
+  name
+    .split(/[\s-]+/)
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
 
-export const MembersCard = ({ name, bio, image, role }: { name: string; bio: string; image: string; role: string }) => {
-    return( <div className="flex flex-col items-center text-wrap gap-4 max-w-full h-72 border p-4 rounded-3xl bg-green-800 border-green-200 transition-opacity duration-300">
-        {/*<img src={image} alt={name} className="w-32 h-32 rounded-full object-cover " />*/}
-        <div className="mx-auto p-4 items-center text-center overflow-hidden text-ellipsis max-w-full border-b">
-        <h2 className="font-heading text-xl font-bold py-2 text-blue-200">{name}</h2>
-        <h2 className="font-heading text-lg font-semibold py-2 text-amber-100 opacity-50">{role}</h2>
-        <p className="font-body text-sm md:text-base lg:text-lg overflow-hidden text-ellipsis text-center text-gray-300">
-          {bio}
-        </p>   
-            </div>
-            </div>
-         
-    )   
-}
+export const MembersCard = ({ name, bio, role }: MembersCardProps) => {
+  return (
+    <article className="flex h-full flex-col items-center rounded-2xl border-t-4 border-haiti-gold bg-white p-6 text-center text-haiti-charcoal shadow-md">
+      <div
+        aria-hidden="true"
+        className="flex h-20 w-20 items-center justify-center rounded-full bg-haiti-navy font-heading text-2xl font-bold text-haiti-gold"
+      >
+        {initials(name)}
+      </div>
+      <h3 className="mt-4 text-xl font-bold text-haiti-navy">{name}</h3>
+      <p className="mt-1 font-bold uppercase tracking-wide text-haiti-red">{role}</p>
+      <p className="mt-4 leading-relaxed">{bio}</p>
+    </article>
+  );
+};

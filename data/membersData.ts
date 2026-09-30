@@ -46,7 +46,7 @@ export const membersData = [
    {
     id:7,
     name: "Marie-Yves Rousseau",
-    role: "board Member",
+    role: "Board Member",
     bio: "Marie-Yves Rousseau is the dedicated board member of Haitian Youth Foundation Inc., contributing to the organization's strategic direction and governance. His experience and commitment to the foundation's mission are vital in guiding our efforts.",
     image: "/team/marie-yves.jpg"
   },

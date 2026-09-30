@@ -1,39 +1,49 @@
+import Image from "next/image";
+import PageHeader from "@/components/PageHeader";
+import Section from "@/components/Section";
+import StatsStrip from "@/components/StatsStrip";
+import CallToAction from "@/components/CallToAction";
+import { stats } from "@/data/stats";
+
+export const metadata = { title: "Our Impact | Haitian Youth Foundation Inc." };
+
+const photos = [
+  { src: "/gallery/girlwriting.jpg", alt: "A child writing at a school desk" },
+  { src: "/gallery/PHOTO-2026-06-14-21-56-32.jpg", alt: "Students studying together outdoors at a school" },
+  { src: "/gallery/smile/PHOTO-2026-06-14-21-56-06.jpg", alt: "A schoolgirl in uniform holding up a paper and smiling" },
+  { src: "/gallery/diploma.jpg", alt: "Four young graduates holding certificates outdoors" },
+  { src: "/gallery/smile/PHOTO-2026-06-14-21-56-08.jpg", alt: "Children gathered together in a community hall" },
+  { src: "/gallery/boy.jpg", alt: "A small boy in a yellow shirt reaching for a yellow balloon" },
+  { src: "/gallery/Fashion Show/fashionshow1.jpg", alt: "Two young models walking outdoors at a fashion show" },
+  { src: "/gallery/PHOTO-2026-06-14-21-56-30.jpg", alt: "A man speaking into a microphone at an outdoor gathering" },
+];
+
 export default function ImpactPage() {
   return (
-    <div className="w-full h-svh text-3xl  text-blue-500 items-center 
-    justify-center mx-auto flex">
-        <div className="">
-             <div className=" mx-auto flex items-center">
-              <h1 className="mx-auto items-center justify-center font-bold text-6xl">Our Impact</h1>
-              </div>
-             <div className="grid grid-cols-3 p-8 gap-8 text-4xl font-semibold leading-6">
-              <div className="gap-4 p-6 text-sm md:text-lg">
-                <h1>Educational Support</h1>
-                <p>We are committed to enhancing the quality of education in Haiti
-                   by providing essential resources to schools in underserved areas.
-                    Our support includes school supplies, books, infrastructure 
-                    improvements, and helping to cover teachers’ salaries, 
-                    ensuring that educators are fairly compensated for their 
-                    critical work. By supporting both students and teachers,
-                     we aim to create a nurturing and effective learning
-                   environment that fosters academic success and personal growth.</p>
-                </div>
-              <div className="p-4 gap-4 text-sm md:text-2xl">
-                <h1>Orphanage Assistance</h1>
-                <p>Many children in Haiti face the harsh reality of
-                   growing up without parents due to natural disasters,
-                    poverty, and other challenges. The Haitian Youth Foundation 
-                    provides direct support to orphanages, offering care packages
-                     that include food, clothing, and educational supplies. 
-                     Our goal is to ensure that these children have access to a stable,
-                      nurturing environment where they can thrive academically and
-                   emotionally, helping to secure a brighter future for them.</p>
-                </div>
-              <div><h1>Community and Cultural Programs</h1></div>
-             </div>
-      </div>
-    </div>
-      
+    <>
+      <PageHeader
+        title="Our Impact"
+        subtitle="Since the 2010 earthquake, friends and supporters have helped us reach more schools and children in Haiti."
+      />
+      <StatsStrip stats={stats} />
+
+      <Section title="Moments from Our Work" intro="A look at the students and communities your support reaches.">
+        <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {photos.map((photo) => (
+            <li key={photo.src} className="relative aspect-square overflow-hidden rounded-2xl shadow-md">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(min-width: 768px) 25vw, 50vw"
+                className="object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <CallToAction />
+    </>
   );
 }
-

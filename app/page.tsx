@@ -1,17 +1,24 @@
-import Image from "next/image";
-import { membersData } from "../data/membersData";
-import { MembersCard } from "../components/MembersCard";
+import Hero from "@/components/Hero";
+import StatsStrip from "@/components/StatsStrip";
+import ProgramCard from "@/components/ProgramCard";
+import Section from "@/components/Section";
+import CallToAction from "@/components/CallToAction";
+import { stats } from "@/data/stats";
+import { programs } from "@/data/programs";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-white mx-auto">
-      <main className="flex flex-1 w-full  flex-col items-center justify-between py-32 px-16 sm:items-start">
-       <div className="grid grid-cols-[repeat(auto-fit,minmax(420px,1fr))] xl:grid-cols-3 gap-8">
-         {membersData.map((member) => (
-          <MembersCard key={member.id} {...member} />
-        ))}</div>
-
-      </main>
-    </div>
+    <>
+      <Hero />
+      <StatsStrip stats={stats} />
+      <Section title="Our Programs">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {programs.map((program) => (
+            <ProgramCard key={program.id} {...program} />
+          ))}
+        </div>
+      </Section>
+      <CallToAction />
+    </>
   );
 }

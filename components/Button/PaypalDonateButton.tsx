@@ -61,7 +61,7 @@ export default function PayPalDonateButton() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex w-full flex-col items-center gap-4">
       {/* Preset amount buttons */}
       <div className="flex flex-wrap justify-center gap-2 lg:gap-4">
         {amounts.map((value) => (
@@ -69,10 +69,10 @@ export default function PayPalDonateButton() {
             key={value}
             type="button"
             onClick={() => handlePresetClick(value)}
-            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors md:text-3xl lg:text-6xl hover:bg-orange-400 hover:text-white ${
+            className={`rounded-full border-2 px-6 py-2 text-lg font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-haiti-navy ${
               amount === value && !customAmount
                 ? "border-haiti-navy bg-haiti-navy text-white"
-                : "border-haiti-navy/30 text-haiti-navy hover:bg-haiti-green-light hover:text-haiti-navy"
+                : "border-haiti-navy/30 bg-white text-haiti-navy hover:border-haiti-navy hover:bg-haiti-offwhite"
             }`}
           >
             ${value}
@@ -81,21 +81,22 @@ export default function PayPalDonateButton() {
       </div>
 
       {/* Custom amount input */}
-      <div className="flex items-center gap-1">
-        <span className="text-haiti-navy font-semibold text-5xl pr-4">$</span>
+      <div className="flex w-full max-w-xs items-center gap-2">
+        <span className="text-2xl font-bold text-haiti-navy" aria-hidden="true">$</span>
         <input
+          aria-label="Custom donation amount in dollars"
           type="number"
           min="1"
           step="1"
           placeholder="Other amount"
           value={customAmount}
           onChange={handleCustomAmountChange}
-          className="h-20 rounded border border-haiti-navy/30 px-2 py-1 text-center text-haiti-navy md:text-3xl lg:text-5xl w-full"
+          className="w-full rounded-lg border border-haiti-navy/30 bg-white px-4 py-3 text-center text-lg text-haiti-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-haiti-navy"
         />
       </div>
 
       {/* PayPal button */}
-      <div className="mt-4 w-full text-3xl items-center justify-center max-w-6xl pl-24" style={{ minHeight: "90px" }}>
+      <div className="mt-4 w-full max-w-md" style={{ minHeight: "90px" }}>
       <div ref={containerRef} />
       </div>
     </div>
