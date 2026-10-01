@@ -11,7 +11,7 @@ export const programs = [
     id: 2,
     title: 'Orphanage Assistance',
     description: 'Many children in Haiti face the harsh reality of growing up without parents due to natural disasters, poverty, and other challenges. The Haitian Youth Foundation provides direct support to orphanages, offering care packages that include food, clothing, and educational supplies. Our goal is to ensure that these children have access to a stable, nurturing environment where they can thrive academically and emotionally, helping to secure a brighter future for them.',
-    href: '/program',
+    href: '/activities',
     image: '/gallery/smile/PHOTO-2026-06-14-21-56-08.jpg',
     imageAlt: 'Children gathered together in a community hall',
   },

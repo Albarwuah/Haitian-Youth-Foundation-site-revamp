@@ -9,12 +9,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-heading: var(--font-playfair);
-  --font-body: var(--font-lato);
-  --font-sans: var(--font-lato);
+  --font-heading: var(--font-baloo);
+  --font-body: var(--font-nunito);
+  --font-sans: var(--font-nunito);
   --color-haiti-navy: #003F88;
   --color-haiti-red: #CE1126;
   --color-haiti-gold: #D4AF37;
+  --color-haiti-green: #1E9A3B;
   --color-haiti-offwhite: #FAF7F2;
   --color-haiti-charcoal: #1A1A2E;
   --color-haiti-lightgray: #E0E0E0;
@@ -24,10 +25,10 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-lato), system-ui, sans-serif;
+    font-family: var(--font-nunito), system-ui, sans-serif;
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-baloo), system-ui, sans-serif;
   }
 }

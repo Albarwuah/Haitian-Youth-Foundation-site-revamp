@@ -2,19 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Playfair_Display, Lato } from "next/font/google";
+import { Baloo_2, Nunito } from "next/font/google";
 
-const playfair = Playfair_Display({
+// Bold, rounded headings that echo the HYF logo's lettering
+const baloo = Baloo_2({
   subsets: ["latin"],
+  weight: ["600", "700", "800"],
   display: "swap",
-  variable: "--font-playfair",
+  variable: "--font-baloo",
 });
 
-const lato = Lato({
+// A warm, humanist body face that pairs with Baloo 2
+const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "600", "700"],
   display: "swap",
-  variable: "--font-lato",
+  variable: "--font-nunito",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${lato.variable}`}>
+    <html lang="en" className={`${baloo.variable} ${nunito.variable}`}>
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"

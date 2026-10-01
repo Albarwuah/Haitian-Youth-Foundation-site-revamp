@@ -14,7 +14,7 @@ export default function CallToAction({
     <section aria-labelledby="cta-heading" className="relative overflow-hidden bg-haiti-navy">
       {/* Background image */}
       <Image
-        src="/gallery/Hyfgala26/footerbg.jpg"
+        src="/gallery/PHOTO-2026-06-14-21-56-13.jpg"
         alt=""
         fill
         className="object-cover"
