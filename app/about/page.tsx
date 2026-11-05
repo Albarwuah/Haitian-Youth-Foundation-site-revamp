@@ -1,72 +1,92 @@
-import { url } from "inspector";
+import Image from "next/image";
+import PageHeader from "@/components/PageHeader";
+import Section from "@/components/Section";
+import CallToAction from "@/components/CallToAction";
+import { MembersCard } from "@/components/MembersCard";
+import { membersData } from "@/data/membersData";
+
+const values = [
+  {
+    title: "Education",
+    text: "We believe that access to quality education is the foundation for a brighter future and a more empowered Haiti.",
+  },
+  {
+    title: "Community Engagement",
+    text: "We foster a spirit of service and responsibility, encouraging youth to actively contribute to the well-being of their communities.",
+  },
+  {
+    title: "Cultural Pride",
+    text: "We promote an understanding and appreciation of Haiti's rich heritage, helping children stay connected to their roots while building their future.",
+  },
+  {
+    title: "Empowerment",
+    text: "We aim to equip Haiti's youth with the skills, resources, and confidence they need to shape their own destiny and lead positive change.",
+  },
+];
+
+export const metadata = { title: "About Us | Haitian Youth Foundation Inc." };
 
 export default function AboutPage() {
   return (
     <>
-    <div className=" items-center justify-center max-h-full mx-auto w-full bg-linear-240 from blue-200 to bg-yellow-200 ">
-      <div className=" grid-cols-1 md:grid-cols-2 grid text-black items-center justify-center  text-6xl md:h-320 lg:h-590 p-4">
-       <div className="text-black">
-        <div className="p-4 md:p-8">
-          <img 
-          className="items-center justify-center"
-            src="\gallery\smile\PHOTO-2026-06-14-21-56-07.jpg"
-            alt="Girl Smiling"
-            loading="lazy"
-          />
-          </div>
-          </div>
-       <div className="text-sm md:text-xl lg:text-3xl">
-        <h1 className="underline mb-8 font-bold leading-3 font-stretch-condensed">About us</h1>
-        <p>Haitian Youth Foundation is a non profit organization established in the state of New York, USA, 
-          under the Internal Revenue Code 501(c)(3) as a charitable organization.
-With the support of friends and family, we have been actively helping various schools and orphanages in Haiti, 
-since the earthquake of 2010. However, the demands far exceeded our meager means. Therefore we decided to 
-officially create a Foundation, in order to reach out to a broader public.
-</p>
-<div>
-</div>
+      <PageHeader
+        title="About Us"
+        subtitle="Empowering Haiti's youth through education, cultural pride, and community service."
+      />
 
-       </div>
-       <div className="gap-8 mx-auto overflow-hidden p-2 md:p-6">
-        <h1 className="text-sm lg:text-3xl xl:text-4xl font-stretch-condensed font-bold underline">Our Core Values</h1>
-         <div className="grid grid-cols-2 justify-center items-center text-sm md:text-3xl text-ellipsis overflow-hidden">
-        <div className="text-sm lg:text-2xl xl:text-3xl gap-6">
-          <h2 className="p-2 italic bold">Education</h2>
-        <p className=""> we believe that access to quality education is 
-          the foundation for a brighter future and a more empowered Haiti.</p>
+      <Section>
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          <div className="space-y-4 text-lg leading-relaxed">
+            <h2 className="text-4xl font-bold text-haiti-navy sm:text-8xl ">Our Story</h2>
+            <p>
+              Haitian Youth Foundation is a non profit organization established in the state of New York, USA, under the
+              Internal Revenue Code 501(c)(3) as a charitable organization.
+            </p>
+            <p>
+              The Haitian Youth Foundation is a non profit organization, established in the state of New York, USA, under the Internal Revenue code (501)©(3). As a charitable institution, we are committed to helping underserved schools and orphanages in Haiti. This is, and will continue to be possible because of the generosity of people like you.
+              Thank you for your continuous support
+            </p>
+
           </div>
-         <div className=" text-sm lg:text-2xl xl:text-3xl p-2" >
-          <h2 className="p-2 italic bold">Community Engagement</h2>
-        <p> We foster a spirit of service and responsibility 
-          encouraging youth to actively contribute to the well-being of their communities</p>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
+            <Image
+              src="/gallery/smile/PHOTO-2026-06-14-21-56-07.jpg"
+              alt="A smiling Haitian girl"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
-         <div className=" text-sm lg:text-2xl xl:text-3xl p-2">
-          <h2 className="p-2 italic bold">Cultural Pride</h2>
-        <p> We promote an understanding & appreciation of Haiti's rich heritage, 
-          helping children stay connected to roots while building their future.</p>
-          </div>
-         <div className=" text-sm lg:text-2xl xl:text-3xl p-6 gap-8">
-          <h2 className="p-2 italic bold">Empowerment
-             </h2>
-        <p> We aim to equip Haiti's youth with the skills, resources, and 
-          confidence they need to shape their own destiny and lead positive change.
-          </p>
         </div>
+      </Section>
 
-       </div>
-       </div>
-      
-       <div className="">
-          <img 
-          className="items-center justify-center max-w-100 lg:max-w-120"
-            src="\gallery\girlwriting.jpg"
-            alt="Girl Smiling"
-            loading="lazy"
-          />
+
+      <Section title="Our Core Values" tone="white">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {values.map((value) => (
+            <article key={value.title} className="rounded-2xl border-t-4 border-haiti-gold bg-haiti-offwhite p-6 shadow-md">
+              <h3 className="text-xl font-bold text-haiti-navy">{value.title}</h3>
+              <p className="mt-3 leading-relaxed">{value.text}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Our Team" className="relative bg-cover bg-center">
+        <Image src="/gallery/Hyfgala26/foundingmembers.jpg" alt="A smiling Haitian girl"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"></Image>
+      <div className="absolute inset-0 bg-black/20"/>     
+        <div className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-3 opacity-80 w -full">
+          {membersData.map((member) => (
+            <MembersCard key={member.id} {...member} />
+          ))}
           </div>
-      </div>
-    </div>
-   
+        
+      </Section>
+
+      <CallToAction />
     </>
-  )
+  );
 }

@@ -1,17 +1,31 @@
-import Image from "next/image";
-import { membersData } from "../data/membersData";
-import { MembersCard } from "../components/MembersCard";
+import Hero from "@/components/Hero";
+//import StatsStrip from "@/components/StatsStrip";
+import ProgramCard from "@/components/ProgramCard";
+import Section from "@/components/Section";
+import CallToAction from "@/components/CallToAction";
+import { stats } from "@/data/stats";
+import { programs } from "@/data/programs";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-white mx-auto">
-      <main className="flex flex-1 w-full  flex-col items-center justify-between py-32 px-16 sm:items-start">
-       <div className="grid grid-cols-[repeat(auto-fit,minmax(420px,1fr))] xl:grid-cols-3 gap-8">
-         {membersData.map((member) => (
-          <MembersCard key={member.id} {...member} />
-        ))}</div>
-
-      </main>
-    </div>
+    <>
+      <Hero />
+            <Section title="Our Mission" tone="white">
+              <div className="text-center text-2xl font-normal sm:text-3xl">
+                <p>Our Mission is to support excellence in education and a thriving environment for the development and bright future of the deprived youth in Haiti.
+                   The foundation is dedicated to developing a comprehensive approach to learning in order to equip the children with instrumental skills, allowing them to participate effectively in the advancement of their community.
+                  The foundation also encourages a cultural approach to learning and focuses on community service, which will serve as a foundation for the future.</p>
+              </div>
+            </Section>
+      <Section title="Our Programs">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          
+          {programs.map((program) => (
+            <ProgramCard key={program.id} {...program} />
+          ))}
+        </div>
+      </Section>
+      <CallToAction />
+    </>
   );
 }

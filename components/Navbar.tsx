@@ -1,27 +1,82 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { navLinks } from '../data/nav';
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { navLinks } from "../data/nav";
+import Button from "./Button";
+
+const links = navLinks.filter((link) => link.href !== "/donate");
+
+const linkClass =
+  "rounded px-1 py-1 font-bold underline-offset-8 hover:text-haiti-gold aria-[current=page]:text-haiti-gold aria-[current=page]:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
   return (
-    <nav className="bg-teal-800 text-amber-200 font-extrabold flex-wrap flex items-center py-4 px-4 md:px-20 relative">
-      <Image src="/Hyflogo.jpg" alt="HYF Logo" width={100} height={90} className="flex justify-center items-center md:w-auto mr-4 border-10 pl-4 border-haiti-offwhite" loading='eager'/>
-      {/* Links */}
-      <div className="md:gap-8 font-semibold sm:text-sm md:text-base lg:text-lg xl:text-2xl sm:py-0 py-4 gap-4 flex-col text-xs md:flex-row flex items-center mx-auto
-      ">
-       {navLinks.map ((link) => (
-          <Link key={link.href}href={link.href} className="hover:underline">
-            {link.name}
-          </Link>
-        ))}
-      </div>
+    <header className="sticky top-0 z-40 border-b-4 border-haiti-gold bg-haiti-navy text-white">
+      <nav aria-label="Main" className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          aria-label="Haitian Youth Foundation home"
+          className="shrink-0 rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        >
+          <Image
+            src="/Hyflogo.jpg"
+            alt="Haitian Youth Foundation logo"
+            width={100}
+            height={90}
+            loading="eager"
+            className="h-14 w-auto rounded bg-white p-1"
+          />
+        </Link>
 
-      {/* Donate button */}
-      <Link href="/donate" className="rounded-full border-2 border-haiti-gold  px-4 py-2 hover:bg-haiti-lightgray
-       hover:text-haiti-navy flex items-center justify-center transition-colors duration-300 top-0 right-4 mt-2 md:mt-0">
-        Donate Here
-      </Link>
+        <ul className="hidden items-center gap-6 lg:flex xl:gap-8">
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} aria-current={pathname === link.href ? "page" : undefined} className={linkClass}>
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-    </nav>
+        <div className="flex items-center gap-3">
+          <Button href="/donate" size="sm">
+            Donate
+          </Button>
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen(!open)}
+            className="rounded border-2 border-white px-3 py-2 text-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
+          >
+            {open ? "Close" : "Menu"}
+            <span className="sr-only"> navigation</span>
+          </button>
+        </div>
+      </nav>
+
+      {open && (
+        <ul id="mobile-menu" className="border-t border-white/20 px-4 pb-4 pt-2 lg:hidden">
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
+                onClick={() => setOpen(false)}
+                className={`block py-3 ${linkClass}`}
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </header>
   );
 }

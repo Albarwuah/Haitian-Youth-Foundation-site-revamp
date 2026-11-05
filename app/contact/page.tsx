@@ -1,5 +1,6 @@
 "use client";
-import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
+import Button from "@/components/Button";
 import { useState } from "react";
 
 
@@ -30,85 +31,70 @@ export default function ContactPage() {
 
       setStatus("success");
       setFormData({ firstname: "", lastname: "", email: "", message: "" });
-    } catch (err) {
+    } catch {
       setStatus("error");
     }
   };
 
   return (
-    <div className="flex flex-col font-sans text-red-900 p-6 items-center justify-center gap-6 h-svh w-full
-     ">
-      <div className="flex flex-col items-center justify-center text-sm md:text-lg lg:text-xl ">
-        <h1 className="text-3xl font-bold mb-8">Get in Touch</h1>
-        <div className="mb-8 text-center w-full max-w-md">
-          For any questions,inquiries or feedback, please write to us using the form below. 
-          <p>Write to us and we will get back to you as soon as possible.</p>
-        </div>
-      </div>
+    <>
+      <PageHeader
+        title="Contact Us"
+        subtitle="Questions, inquiries, or feedback? Write to us and we will get back to you as soon as possible."
+      />
 
-      <div className="bg-white border-2 border-haiti-gold rounded-lg p-6 shadow-lg max-w-500 h-500 mx-auto w-full items-center">
-        <div className="p-6 font-extrabold mask-b-from-rose-200 text-center h-40 w-full text-7xl">Contact Us</div>
-        <form className="flex flex-col gap-4 " onSubmit={handleSubmit}> 
-          <div className="flex flex-col gap-1">
-            <label htmlFor="firstname" className="sr-only">First Name</label>
-            <input
-              id="firstname"
-              type="text"
-              name="firstname"
-              placeholder="First Name"
-              required
-              className=" h-10border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-500"
-              value={formData.firstname}
-              onChange={handleChange}
-            />
-            <label htmlFor="lastname" className="sr-only">Last Name</label>
-            <input
-              id="lastname"
-              type="text"
-              name="lastname"
-              placeholder="Last Name"
-              required
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-500"
-              value={formData.lastname}
-              onChange={handleChange}
-            />
-            <label htmlFor="email" className="sr-only">Email</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-500"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            <label htmlFor="message" className="sr-only">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Message"
-              required
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-500"
-              value={formData.message}
-              onChange={handleChange}
-            ></textarea>
+      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3 lg:px-8">
+        <div className="rounded-2xl border-t-4 border-haiti-gold bg-white p-6 shadow-md lg:col-span-1">
+          <h2 className="text-2xl font-bold text-haiti-navy">Get in Touch</h2>
+          <address className="mt-4 flex flex-col gap-3 not-italic">
+            <span>PO Box 650142, Fresh Meadows, NY 11365</span>
+            <a href="mailto:HYF@haitianyouth.org" className="font-bold text-haiti-navy underline underline-offset-4 hover:text-haiti-red">
+              HYF@haitianyouth.org
+            </a>
+            <a href="tel:7187814747" className="font-bold text-haiti-navy underline underline-offset-4 hover:text-haiti-red">
+              718-781-4747
+            </a>
+          </address>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-5 rounded-2xl border-t-4 border-haiti-gold bg-white p-6 shadow-md sm:p-8 lg:col-span-2"
+        >
+          <h2 className="text-2xl font-bold text-haiti-navy">Send Us a Message</h2>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label htmlFor="firstname" className="mb-1 block font-bold text-haiti-navy">First Name</label>
+              <input id="firstname" type="text" name="firstname" required className="w-full rounded-lg border border-haiti-charcoal/30 bg-white px-4 py-3 text-haiti-charcoal focus:border-haiti-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-haiti-navy" value={formData.firstname} onChange={handleChange} />
+            </div>
+            <div>
+              <label htmlFor="lastname" className="mb-1 block font-bold text-haiti-navy">Last Name</label>
+              <input id="lastname" type="text" name="lastname" required className="w-full rounded-lg border border-haiti-charcoal/30 bg-white px-4 py-3 text-haiti-charcoal focus:border-haiti-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-haiti-navy" value={formData.lastname} onChange={handleChange} />
+            </div>
           </div>
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors duration-300 disabled:opacity-50"
-          >
-            {status === "sending" ? "Sending..." : "Send Message"}
-          </button>
-          {status === "success" && (
-            <div className="text-green-600 mt-2">Message sent successfully!</div>
-          )}
-          {status === "error" && (
-            <div className="text-red-600 mt-2">Something went wrong. Please try again.</div>
-          )}
+            <div>
+              <label htmlFor="email" className="mb-1 block font-bold text-haiti-navy">Email</label>
+              <input id="email" type="email" name="email" required className="w-full rounded-lg border border-haiti-charcoal/30 bg-white px-4 py-3 text-haiti-charcoal focus:border-haiti-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-haiti-navy" value={formData.email} onChange={handleChange} />
+            </div>
+          <div>
+            <label htmlFor="message" className="mb-1 block font-bold text-haiti-navy">Message</label>
+            <textarea id="message" name="message" required rows={6} className="w-full rounded-lg border border-haiti-charcoal/30 bg-white px-4 py-3 text-haiti-charcoal focus:border-haiti-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-haiti-navy" value={formData.message} onChange={handleChange} />
+          </div>
+          <div>
+            <Button type="submit" variant="secondary" disabled={status === "sending"}>
+              {status === "sending" ? "Sending..." : "Send Message"}
+            </Button>
+          </div>
+          <div role="status" aria-live="polite">
+            {status === "success" && (
+              <p className="rounded-lg bg-haiti-navy/10 p-3 font-bold text-haiti-navy">Message sent successfully! Please check your email for a confirmation.</p>
+            )}
+            {status === "error" && (
+              <p className="rounded-lg bg-haiti-red/10 p-3 font-bold text-haiti-red">Something went wrong. Please try again.</p>
+            )}
+          </div>
         </form>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
